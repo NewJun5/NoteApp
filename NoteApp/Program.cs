@@ -11,7 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using NoteApp;
 
 
-class HelloWorld //как переименовать?
+class Programm //как переименовать?
 {
     static void Main()
     {
