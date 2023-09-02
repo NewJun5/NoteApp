@@ -9,9 +9,7 @@ namespace NoteApp.Command
 {
     public class Command_EditNote : ICommand
     {
-        public ListOfItem ListOfNotes { get; set; }
-        static List<int> listIntCommandForEdit { get; set; }
-        static int backCommand { get; set; }
+        public ListOfItem ListOfNotes { get; set; }       
 
         public Command_EditNote(ListOfItem listOfNotes)
         {
@@ -37,7 +35,7 @@ namespace NoteApp.Command
                     new DataVisualisationFromRelationalDb<ToDo>().View(note);
 
                     var workWithEditNoteMenu = new Command_WorkWithEditNoteMenu(note);
-                    new Command.Invoker().Invoke(workWithEditNoteMenu);   //  Какая кодманда основного меню здесь зависает?             
+                    new Command.Invoker().Invoke(workWithEditNoteMenu);      
                 }
                 Console.WriteLine();
 

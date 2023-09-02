@@ -11,10 +11,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using NoteApp;
 
 
-class Programm //как переименовать?
+class Program 
 {
     static void Main()
-    {
+    {        
         NoteApp.Application.Run();
     }
 

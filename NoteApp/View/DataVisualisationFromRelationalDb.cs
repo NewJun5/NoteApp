@@ -11,16 +11,16 @@ namespace NoteApp
 {
     public class DataVisualisationFromRelationalDb<T>
     {
-        static Type classType { get; set; }
+        static Type ClassType { get; set; }
         public List<string> classProperties = new List<string>();
         public List<string[]> DateForImage = new List<string[]>();
         
 
         public DataVisualisationFromRelationalDb()
         {
-            classType = typeof(T);
+            ClassType = typeof(T);
 
-            GetPropertiesFromClass(classType);
+            GetPropertiesFromClass(ClassType);
         }
 
         public void GetPropertiesFromClass(Type classType)
@@ -37,7 +37,7 @@ namespace NoteApp
             {
                 if (!classProperties.Contains(column))
                 {
-                    new Exception($"classProperties of class {classType} doesn't contain {column}");
+                    new Exception($"classProperties of class {ClassType} doesn't contain {column}");
                 }
             }
 
@@ -54,7 +54,7 @@ namespace NoteApp
 
                 for (int i = 0; i < classProperties.Count; i++)
                 {
-                    dataRow[i] = classType.GetProperty(classProperties[i])?.GetValue(classInstance).ToString();
+                    dataRow[i] = ClassType.GetProperty(classProperties[i])?.GetValue(classInstance).ToString();
                 }
                 listData.Add(dataRow);
             }

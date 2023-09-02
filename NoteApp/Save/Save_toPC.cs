@@ -14,11 +14,11 @@ namespace NoteApp
         public static string DirectoryPathForSaving = Appsetting.GetDirectoryPathPC();
         public static string NameFileForRecord = "UserNotes-Json.txt";       
 
-        public static void Record(List<ToDo> listNotes)
+        public static void Record(ListOfItem listOfNotes)
         {
             string pathToFile = $@"{DirectoryPathForSaving}\{NameFileForRecord}";
 
-            JsonSerializerOptions options = new JsonSerializerOptions()
+            var options = new JsonSerializerOptions()
             {
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                 WriteIndented = true
@@ -26,14 +26,12 @@ namespace NoteApp
 
             using (var stream = new StreamWriter(pathToFile, false))
             {
-                foreach (var note in listNotes)
+                foreach (var note in listOfNotes)
                 {
                     string note_json = JsonSerializer.Serialize<ToDo>(note, options);                   
                     stream.WriteLine(note_json);
                 }
             }
-
-            Console.WriteLine("Информация сохранена!");
         }
 
     }

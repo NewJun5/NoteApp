@@ -33,7 +33,7 @@ namespace NoteApp
 
         public static ListOfItem UploadingDataFromDb()
         {
-            return Model.GetDataFromDb(); // Заглушка
+            return Model.GetDataFromDb();
         }
     }
 

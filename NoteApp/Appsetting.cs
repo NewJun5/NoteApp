@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
-    public class Appsetting
+    public static class Appsetting
     {
-        readonly static string ConnectionString = @"Data Source=DESKTOP-47N01LD\\\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;";
+        readonly static string ConnectionString = @"Data Source=DESKTOP-47N01LD\SQLEXPRESS; Database = notesUser_db; Trusted_Connection=True;";
+        readonly static string TableTitle = "notes_db";
+
 
         //настройки для работы с SystemIO
         readonly static string DirectoryPathPC = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -20,6 +22,11 @@ namespace NoteApp
         public static string GetConnectionStringToDb()
         {
             return ConnectionString;
+        }
+
+        public static string GetTableTitle()
+        {
+            return TableTitle;
         }
     }
 }

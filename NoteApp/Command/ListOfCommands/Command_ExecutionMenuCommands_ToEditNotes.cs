@@ -33,7 +33,7 @@ namespace NoteApp.Command
 
             while (ExitCommand != CommandCurrent)
             {
-                CommandCurrent = Commands.AcceptCommand(ListIntCommands);                
+                CommandCurrent = Commands.AcceptCommand("EDIT_NOTE_MENU", ListIntCommands);                
                 Commands.ExecuteCommands_ForEditNote(Note, CommandCurrent);
             }
 

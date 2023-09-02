@@ -9,9 +9,9 @@ namespace NoteApp.Command
 {
     public class Commands
     {
-        public static int AcceptCommand(List<int> listAvailableCommands)
+        public static int AcceptCommand(string nameMenu, List<int> listAvailableCommands)
         {
-            Console.Write($"Введите номер команды: ");
+            Console.Write($"Введите номер {nameMenu} команды: ");
             int command = Checking.ToCheckEnteredStrCommand(Console.ReadLine(), listAvailableCommands);
 
             return command;

@@ -22,7 +22,8 @@ namespace NoteApp.Command
             Notification.SuccessfulAction("Данные сохранены!");
             Notification.Info($"Имя файла: {Save_toPC.NameFileForRecord}, Директория:{Save_toPC.DirectoryPathForSaving}");
 
-            Save_toDb.SaveToDb();
+            Save_toDb.SaveToDb(ListOfNotes);
+            Notification.Info($"Строка подключения: {Save_toDb.ConnectionString}, Имя таблицы:{Save_toDb.TableTitle}");
         }
     }
 }

@@ -28,7 +28,7 @@ namespace NoteApp.Command
 
                 if (ListOfNotes.DeleteNote(numberNote))
                 {
-                    //Корректировка всех id
+                    //выравнивание последовательно id
                     Helper.CorrectId(ListOfNotes, numberNote);
 
                     Notification.SuccessfulAction($"Заметка под номером {numberNote} успешно удалена!");
