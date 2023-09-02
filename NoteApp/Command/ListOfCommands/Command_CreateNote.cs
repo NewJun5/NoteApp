@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NoteApp.Assistive;
+﻿using NoteApp.Assistive;
+using NoteApp.View;
 
 namespace NoteApp.Command
 {
@@ -24,7 +20,7 @@ namespace NoteApp.Command
             if (ListOfNotes.Count < ListOfNotes.MaxCountNotes)
             {
                 ToDo note = ListOfNotes.GetNote(ListOfNotes.Count);
-                new DataVisualisationFromRelationalDb<ToDo>().View(note);
+                new DataVisualisation<ToDo>().View(note);
 
                 Notification.SuccessfulAction("Заметка успешно добавлена!");
 

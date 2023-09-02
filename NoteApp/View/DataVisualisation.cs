@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteApp.View;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,39 +10,27 @@ using View;
 
 namespace NoteApp
 {
-    public class DataVisualisationFromRelationalDb<T>
+    public class DataVisualisation<T>
     {
-        static Type ClassType { get; set; }
-        public List<string> classProperties = new List<string>();
-        public List<string[]> DateForImage = new List<string[]>();
-        
+        public List<string> ColumnHeading = new List<string>();
+        public List<string[]> DateForImage = new List<string[]>();        
 
-        public DataVisualisationFromRelationalDb()
+        public DataVisualisation()
         {
-            ClassType = typeof(T);
-
-            GetPropertiesFromClass(ClassType);
-        }
-
-        public void GetPropertiesFromClass(Type classType)
-        {
-            foreach (PropertyInfo prop in classType.GetProperties(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static))
-            {
-                classProperties.Add(prop.Name.ToString());
-            }
-        }
+            ColumnHeading = DbClassInformation<ToDo>.GetClassProperties();
+        }        
 
         public void Option(params string[] nameColumnsForView)
         {
             foreach (var column in nameColumnsForView)
             {
-                if (!classProperties.Contains(column))
+                if (!ColumnHeading.Contains(column))
                 {
-                    new Exception($"classProperties of class {ClassType} doesn't contain {column}");
+                    new Exception($"ColumnHeading of class {typeof(T)} doesn't contain {column}");
                 }
             }
 
-            classProperties = nameColumnsForView.ToList();
+            ColumnHeading = nameColumnsForView.ToList();
         }
 
         public List<string[]> LoadingData(List<T> listInstanceOfClass)
@@ -50,11 +39,11 @@ namespace NoteApp
 
             foreach (var classInstance in listInstanceOfClass)
             {
-                var dataRow = new string[classProperties.Count];
+                var dataRow = new string[ColumnHeading.Count];
 
-                for (int i = 0; i < classProperties.Count; i++)
+                for (int i = 0; i < ColumnHeading.Count; i++)
                 {
-                    dataRow[i] = ClassType.GetProperty(classProperties[i])?.GetValue(classInstance).ToString();
+                    dataRow[i] = typeof(T).GetProperty(ColumnHeading[i])?.GetValue(classInstance).ToString();
                 }
                 listData.Add(dataRow);
             }
@@ -64,9 +53,9 @@ namespace NoteApp
 
         public void PreparationOfDataForView(List<T> listInstanceOfClass)
         {
-            DateForImage.Add(classProperties.ToArray());
+            DateForImage.Add(ColumnHeading.ToArray());
             DateForImage.AddRange(LoadingData(listInstanceOfClass));
-            TableFormat.Сonfigure(classProperties.ToArray(), DateForImage, 30);
+            TableFormat.Сonfigure(ColumnHeading.ToArray(), DateForImage, 30); // 30 - ограничение размера ширины колонки.
         }
         
 

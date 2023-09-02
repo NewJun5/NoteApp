@@ -1,13 +1,6 @@
 ﻿using NoteApp.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NoteApp
+namespace NoteApp.View
 {
 
     public class ViewCommands

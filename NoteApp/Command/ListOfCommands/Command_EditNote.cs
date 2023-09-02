@@ -32,7 +32,7 @@ namespace NoteApp.Command
                 else
                 {
                     Console.WriteLine($"Заметка под номером № {numberNote}: ");
-                    new DataVisualisationFromRelationalDb<ToDo>().View(note);
+                    new DataVisualisation<ToDo>().View(note);
 
                     var workWithEditNoteMenu = new Command_WorkWithEditNoteMenu(note);
                     new Command.Invoker().Invoke(workWithEditNoteMenu);      

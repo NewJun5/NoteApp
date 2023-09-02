@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace NoteApp.Command
 {
     public class Command_EditNotesText : ICommand // шляпа
@@ -22,7 +17,7 @@ namespace NoteApp.Command
             Note.Notes = Console.ReadLine();
 
             Console.WriteLine("Текст заметки изменен!");
-            new DataVisualisationFromRelationalDb<ToDo>().View(Note);
+            new DataVisualisation<ToDo>().View(Note);
             Console.WriteLine();
         }
     }

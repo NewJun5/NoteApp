@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NoteApp.View;
 
 namespace NoteApp.Command
 {
@@ -19,7 +15,7 @@ namespace NoteApp.Command
         {
             Note.IsDone = !Note.IsDone;
             Console.WriteLine("Статус заметки изменен!");
-            new DataVisualisationFromRelationalDb<ToDo>().View(Note);
+            new DataVisualisation<ToDo>().View(Note);
             Console.WriteLine();
         }
     }

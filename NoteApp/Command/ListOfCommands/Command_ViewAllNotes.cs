@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NoteApp.Assistive;
+﻿using NoteApp.Assistive;
+using NoteApp.View;
 
 namespace NoteApp.Command
 {
@@ -22,7 +18,7 @@ namespace NoteApp.Command
                 Notification.Info("Вас список заметок пуст!");
             else 
             {
-                new DataVisualisationFromRelationalDb<ToDo>().View(ListOfNotes);
+                new DataVisualisation<ToDo>().View(ListOfNotes);
                 ViewCommands.ViewCommandMainMenu();
             }
             Console.WriteLine();            
